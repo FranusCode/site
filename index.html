@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><3</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fcfcfc;
+        }
+
+        #valentine-container {
+            text-align: center;
+        }
+
+        #valentine-text {
+            font-size: 24px;
+            font-weight: normal;
+            color: #000000;
+            font-family: 'Arial', sans-serif;
+            line-height: 0.5;
+        }
+        
+        #valentine-under {
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            font-family: 'Arial', sans-serif;
+            line-height: 0.5;
+        }
+
+        #valentine-gif {
+            width: 300px;
+            height: auto;
+            margin-top: 20px;
+        }
+        
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .valentine-button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        #yes-button {
+            background-color: #4caf50;
+            color: #ffffff;
+        }
+
+        #no-button {
+            background-color: #f44336;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div id="valentine-container">
+        <img id="valentine-gif" src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif" alt="Miś z różami">
+        <p id="valentine-text">Czy chcesz być moją walentynką??</p>
+        <p id="valentine-under">(dzień po dniu singla 😭)</p>
+        <div class="button-container">
+            <button id="yes-button" class="valentine-button" onclick="goToFajniePage()">Tak</button>
+            <button id="no-button" class="valentine-button" onclick="increaseButtonSizeAndCheck('no-button')">Nie</button>
+        </div>
+    </div>
+
+    <script>
+        var nahhClickCount = 0;
+
+        function increaseButtonSize(buttonId) {
+            if (buttonId === 'yes-button') {
+                var button = document.getElementById(buttonId);
+                var currentSize = window.getComputedStyle(button, null).getPropertyValue('font-size');
+                var newSize = (parseFloat(currentSize) * 1.7) + 'px';
+                button.style.fontSize = newSize;
+            }
+        }
+
+        function increaseButtonSizeAndCheck(buttonId) {
+            var button = document.getElementById(buttonId);
+
+            if (buttonId === 'no-button') {
+                if (nahhClickCount === 0) {
+                    button.innerHTML = 'Pewnaś? 🥲';
+                } else if (nahhClickCount === 1) {
+                    button.innerHTML = 'Proszee 🥺';
+                } else if (nahhClickCount === 2) {
+                    button.innerHTML = 'Tak się nie robi 😓';
+                } else if (nahhClickCount === 3) {
+                    button.innerHTML = 'Ostatnia szansa...';
+                } else {
+                    window.location.href = 'sus.html';
+                }
+
+                increaseButtonSize('yes-button');
+                nahhClickCount++;
+            }
+        }
+
+        function goToFajniePage() {
+            window.location.href = 'fajnie.html';
+        }
+    </script>
+</body>
+</html>
